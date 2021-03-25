@@ -26,7 +26,6 @@
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| seller                              | string     | null: false       |
 | name                                | string     | null: false       |
 | text                                | text       | null: false       |
 | category_id                         | integer    | null: false       |
@@ -61,17 +60,17 @@
 
 
 
-## address table
+## addresses table
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| postcode    | string     | null: false       |
-| prefecture  | integer    | null: false       |
-| city        | string     | null: false       |
-| block       | string     | null: false       |
-| building    | string     |                   |
-| tel         | string     | null: false       |
-| purchaser   | references | foreign_key: true |
+| Column         | Type       | Options              |
+|----------------|------------|----------------------|
+| postcode       | string     | null: false          |
+| prefecture_id  | integer    | null: false          |
+| city           | string     | null: false          |
+| block          | string     | null: false          |
+| building       | string     |                      |
+| tel            | string     | null: false          |
+| purchaser      | references | foreign_key: true    |
 
 
 ### Association
