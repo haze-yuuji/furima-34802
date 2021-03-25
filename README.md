@@ -5,11 +5,15 @@
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | nickname           | string              | null: false             |
-| email              | string              | null: false             |
+| email              | string              | unique: true            |
 | password           | string              | null: false             |
+| encrypted_password | string              | null: false             |
 | name               | string              | null: false             |
 | ruby_name          | string              | null: false             |
+| first_name         | string              | null: false             |
+| last_name          | string              | null: false             |
 | birthday           | datetime            | null: false             |
+
 
 
 ### Association
@@ -23,10 +27,14 @@
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
+| seller                              | string     | null: false       |
 | name                                | string     | null: false       |
 | text                                | text       | null: false       |
 | category                            | text       | null: false       |
 | status                              | text       | null: false       |
+| delivery                            | integer    | null: false       |
+| prefecture                          | text       | null: false       |
+| days                                | date       | null: false       |
 | price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
@@ -34,7 +42,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchasers
+- has_one :purchaser
 
 
 
@@ -42,9 +50,6 @@
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| delivery    | integer    | null: false       |
-| prefecture  | text       | null: false       |
-| days        | date       | null: false       |
 | user        | references | foreign_key: true |
 | product     | references | foreign_key: true |
 
@@ -61,14 +66,13 @@
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| postcode    | integer    | null: false       |
-| prefecture  | text       | null: false       |
-| city        | text       | null: false       |
-| block       | text       | null: false       |
-| building    | text       | null: false       |
-| tel         | integer    | null: false       |
-| user        | references | foreign_key: true |
-| product     | references | foreign_key: true |
+| postcode    | string     | null: false       |
+| prefecture  | integer    | null: false       |
+| city        | string     | null: false       |
+| block       | string     | null: false       |
+| building    | string     | null: false       |
+| tel         | string     | null: false       |
+| purchaser   | references | foreign_key: true |
 
 
 ### Association
