@@ -1,24 +1,76 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| nickname           | string              | null: false             |
+| email              | string              | null: false             |
+| password           | string              | null: false             |
+| name               | string              | null: false             |
+| ruby_name          | string              | null: false             |
+| birthday           | datetime            | null: false             |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+* has_many :items
+* has_many :purchasers
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## items table
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column                              | Type       | Options           |
+|-------------------------------------|------------|-------------------|
+| name                                | string     | null: false       |
+| text                                | text       | null: false       |
+| category                            | text       | null: false       |
+| status                              | text       | null: false       |
+| price                               | integer    | null: false       |
+| user                                | references | foreign_key: true |
 
-* Deployment instructions
 
-* ...
+### Association
+
+- belongs_to :user
+- has_one :purchasers
+
+
+
+## purchasers table
+
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| delivery    | integer    | null: false       |
+| prefecture  | text       | null: false       |
+| days        | date       | null: false       |
+| user        | references | foreign_key: true |
+| product     | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :addresss
+
+
+
+## addresss table
+
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| postcode    | integer    | null: false       |
+| prefecture  | text       | null: false       |
+| city        | text       | null: false       |
+| block       | text       | null: false       |
+| building    | text       | null: false       |
+| tel         | integer    | null: false       |
+| user        | references | foreign_key: true |
+| product     | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :purchaser
