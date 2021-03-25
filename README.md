@@ -6,13 +6,12 @@
 |--------------------|---------------------|-------------------------|
 | nickname           | string              | null: false             |
 | email              | string              | unique: true            |
-| password           | string              | null: false             |
 | encrypted_password | string              | null: false             |
 | name               | string              | null: false             |
 | ruby_name          | string              | null: false             |
 | first_name         | string              | null: false             |
 | last_name          | string              | null: false             |
-| birthday           | datetime            | null: false             |
+| birthday           | date　　　            | null: false            |
 
 
 
@@ -30,11 +29,11 @@
 | seller                              | string     | null: false       |
 | name                                | string     | null: false       |
 | text                                | text       | null: false       |
-| category                            | text       | null: false       |
-| status                              | text       | null: false       |
-| delivery                            | integer    | null: false       |
-| prefecture                          | text       | null: false       |
-| days                                | date       | null: false       |
+| category_id                         | integer    | null: false       |
+| status_id                           | integer    | null: false       |
+| delivery_id                         | integer    | null: false       |
+| prefecture_id                       | integer    | null: false       |
+| days_id                             | integer    | null: false       |
 | price                               | integer    | null: false       |
 | user                                | references | foreign_key: true |
 
@@ -58,11 +57,11 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :addresss
+- has_one :address
 
 
 
-## addresss table
+## address table
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
@@ -70,7 +69,7 @@
 | prefecture  | integer    | null: false       |
 | city        | string     | null: false       |
 | block       | string     | null: false       |
-| building    | string     | null: false       |
+| building    | string     |                   |
 | tel         | string     | null: false       |
 | purchaser   | references | foreign_key: true |
 
